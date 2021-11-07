@@ -1,0 +1,14 @@
+<!-- 필드오류 -->
+{% for field, error in form.errors.items() %}
+<div role="alert">
+    <strong>{{ form[field].label }}</strong>: {{', '.join(error) }}
+</div>
+{% endfor %}
+
+<!-- flash 오류 -->
+<!-- flash('') 해당 코드로 생성되는 오류 -->
+{% for message in get_flashed_messages() %}
+<div role="alert">
+    {{ message }}
+</div>
+{% endfor %}
