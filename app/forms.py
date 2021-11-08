@@ -17,3 +17,7 @@ class UserCreateForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     email = EmailField('email', validators=[DataRequired(), Email()])
     birth = DateField('birth date', validators=[DataRequired()])
+
+class UserSigninForm(FlaskForm):
+    username = StringField('ID', validators=[DataRequired(), Length(min=3, max=25)])
+    password = PasswordField('Password', validators=[DataRequired()])

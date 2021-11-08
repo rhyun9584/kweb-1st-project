@@ -1,6 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <button onclick="location.href='/auth/signin'">Sign In</button>
-    <button onclick="location.href='/auth/signup'">Sign Up</button>
+    {% if g.user %}
+    <span>{{ g.user.username }} </span>
+    <a href="{{ url_for('auth.signout') }}">(Sign Out)</a>
+    {% else %}
+    <button onclick="location.href='{{ url_for('auth.signin') }}'">Sign In</button>
+    {% endif %}
+    <button onclick="location.href='{{ url_for('auth.signup') }}'">Sign Up</button>
 {% endblock %}
