@@ -6,6 +6,6 @@
     <a href="{{ url_for('auth.signout') }}">(Sign Out)</a>
     {% else %}
     <button onclick="location.href='{{ url_for('auth.signin') }}'">Sign In</button>
-    {% endif %}
     <button onclick="location.href='{{ url_for('auth.signup') }}'">Sign Up</button>
+    {% endif %}
 {% endblock %}
