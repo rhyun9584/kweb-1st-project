@@ -58,7 +58,7 @@ def signin():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('main.main'))
+            return redirect(url_for('user.user_list'))
         flash(error)
 
     return render_template('auth/signin.html', form=form)

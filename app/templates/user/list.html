@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<span>{{ g.user.username }} </span>
+<a href="{{ url_for('auth.signout') }}">(Sign Out)</a>
+
+<ul>
+    {% for user in user_list %}
+    <li>
+        <div></div>
+        <a href="/user/{{ user.id }}/">{{ user.username }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -18,9 +18,10 @@ def create_app():
     from . import models
 
     # blueprint (청사진) -> routing
-    from .views import main_views, auth_views
+    from .views import main_views, auth_views, user_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(auth_views.bp)
+    app.register_blueprint(user_views.bp)
 
     @app.errorhandler(404)
     def page_not_found(error):
