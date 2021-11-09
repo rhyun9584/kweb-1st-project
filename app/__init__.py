@@ -1,4 +1,5 @@
 from flask import Flask
+from flask.templating import render_template
 from flask_migrate import Migrate, migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -20,5 +21,9 @@ def create_app():
     from .views import main_views, auth_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(auth_views.bp)
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('page_not_found.html'), 404
 
     return app

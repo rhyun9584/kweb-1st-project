@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for, render_template, flash, request, session, g
+from flask import Blueprint, url_for, render_template, flash, request, session, g, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
@@ -10,6 +10,10 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/signup/', methods=('GET', 'POST'))
 def signup():
+    if g.user:
+        # 이미 로그인된 경우 404 return
+        abort(404)
+
     form = UserCreateForm()
     if request.method == 'POST' and form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -30,6 +34,10 @@ def signup():
 
 @bp.route('/signin/', methods=('GET', 'POST'))
 def signin():
+    if g.user:
+        # 이미 로그인된 경우 404 return
+        abort(404)
+
     form = UserSigninForm()
     if request.method == 'POST' and form.validate_on_submit():
         error = None
