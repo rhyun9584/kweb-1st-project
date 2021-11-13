@@ -12,6 +12,9 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(config)
 
+    # jinja2에서 {% break %} 사용을 위함 
+    app.jinja_env.add_extension('jinja2.ext.loopcontrols')
+
     # DB 연결
     db.init_app(app)
     migrate.init_app(app, db)

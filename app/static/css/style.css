@@ -1,0 +1,41 @@
+.form {
+    min-width: 500px;
+}
+.form-header {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.form-control {
+    height: 45px;
+}
+.signin-btn {
+    margin-top: 10px;
+}
+.signup-btn {
+    right: 0;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user-list {
+    margin: 10px;
+}
+
+tr.row-link:hover { background-color: lightgrey; }
+
+.bg-light {
+    background-color: white;
+}
+
+html {
+    min-height: 100%;
+}
+body {
+    background-image: linear-gradient(skyblue, pink);
+}
+

@@ -1,6 +1,10 @@
 <!-- 필드오류 -->
 {% for field, error in form.errors.items() %}
-<div role="alert">
+<!-- 에러가 많으면 페이지가 너무 길어져서 2개까지만 출력 -->
+{% if loop.index > 2 %}
+    {% break %}
+{% endif %}
+<div class="alert alert-danger" role="alert">
     <strong>{{ form[field].label }}</strong>: {{', '.join(error) }}
 </div>
 {% endfor %}
@@ -8,7 +12,7 @@
 <!-- flash 오류 -->
 <!-- flash('') 해당 코드로 생성되는 오류 -->
 {% for message in get_flashed_messages() %}
-<div role="alert">
+<div class="alert alert-danger" role="alert">
     {{ message }}
 </div>
 {% endfor %}
