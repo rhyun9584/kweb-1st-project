@@ -3,7 +3,6 @@ from flask import (
     render_template,
     url_for,
     abort,
-    session,
     g,
 )
 
@@ -14,19 +13,17 @@ bp = Blueprint('user', __name__, url_prefix='/user')
 
 @bp.route('/')
 def user_list():
-    if g.user is None:
-        # 로그인하지않은 경우 404 NOT FOUND
-        abort(404)
-
     users = User.query.all()
     return render_template('user/list.html', user_list=users)
 
 @bp.route('/<user_id>/')
 def user_info(user_id):
-    if g.user is None:
-        # 로그인하지않은 경우 404 NOT FOUND
-        abort(404)
-
     user = User.query.get_or_404(user_id)
     return render_template('user/info.html', user=user)
+
+# /user/ 이하 페이지는 전부 로그인 후 접근 가능 
+@bp.before_request
+def load_logged_in_user():
+    if g.user is None:
+        abort(404)
     
