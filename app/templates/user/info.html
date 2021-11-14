@@ -6,8 +6,17 @@
         <h2 class="display-2">{{ user.name }}</h2>
         <p>@{{ user.username }}</p>
     </div>
-    <div>email : {{ user.email }}</div>
-    <div>birth : {{ user.birth.year }}/{{ user.birth.month }}/{{ user.birth.day }}</div>
+    <div style="border-top: 1px solid grey; margin-bottom: 5px;"></div>
+    <table class="table table-borderless">
+        <tr>
+            <th scope="row">email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th scope="row">birth</th>
+            <td>{{ user.birth }}</td>
+        </tr>
+    </table>
     <button type="button" class="btn btn-secondary info-btn" onclick="location.href='{{ url_for('user.user_list') }}'">Return to list</button>
 </div>
 {% endblock %}
