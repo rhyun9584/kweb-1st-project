@@ -1,8 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div> Username : {{ user.username }}</div>
-<div>   email  : {{ user.email }}</div>
-<div>   birth  : {{ user.birth }}</div>
-<a href="{{ url_for('user.user_list') }}">Return to list</a>
+<div class="jumbotron center info">
+    <div>
+        <h2 class="display-2">{{ user.name }}</h2>
+        <p>@{{ user.username }}</p>
+    </div>
+    <div>email : {{ user.email }}</div>
+    <div>birth : {{ user.birth.year }}/{{ user.birth.month }}/{{ user.birth.day }}</div>
+    <button type="button" class="btn btn-secondary info-btn" onclick="location.href='{{ url_for('user.user_list') }}'">Return to list</button>
+</div>
 {% endblock %}
